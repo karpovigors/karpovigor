@@ -27,9 +27,9 @@
     <string name="fail_add_animal">Не удалось добавить новое животное!</string>
     <string name="action_update">Обновить</string>
     <string name="developer">"Разработчик: "</string>
-    <string name="developer_fio">Чиварзин А. Е.</string>
+    <string name="developer_fio">Карпов И.Е.</string>
     <string name="developer_group">"Группа: "</string>
-    <string name="developer_group_value">ИУ5Ц-72Б</string>
+    <string name="developer_group_value">ИУ5Ц-74Б</string>
     <string name="action_delete">Удалить</string>
     <string name="open_API">Открыть API</string>
     <string name="yes">Да</string>
