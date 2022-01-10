@@ -1,16 +1,13 @@
-from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import render
-from .models import Animal
+from bmstu_lab.models import Book
 
+def bookList(request):
+    return render(request, 'books.html', {'data' : {
+        'current_date': date.today(),
+        'books': Book.objects.all()
+    }})
 
-def index(request):
-    a_list = Animal.objects.all()
-    return render(request, 'master/list.html', dict([('a_list', a_list)]))
-
-
-def detail(request, animal_id):
-    try:
-        a = Animal.objects.get(id=animal_id)
-    except:
-        raise Http404('Животное не найдено!')
-    return render(request, 'master/detail.html', dict([('animal', a)]))
+def GetBook(request, id):
+    return render(request, 'book.html', {'data' : {
+        'current_date': date.today(),
+        'book': Book.objects.filter(id=id)[0]
+    }})

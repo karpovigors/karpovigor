@@ -1,30 +1,14 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}{{ animal.animal_name}}{% endblock %}
+{% block title %}Список книг{% endblock %}
 
 {% block content %}
-
-    <center><h1>{{ animal.animal_name }}</h1></center><hr><br>
-{#    Вид животного: {{ animal.animal_type }}<br>#}
-{#    Имя животного: {{ animal.animal_name }}<br>#}
-{#    <br>#}
-{#    Фото животного<br>#}
-{#    <img src="{{ animal.animal_photo }}" alt="Фото животного не найдено">#}
-    <table border="1" cellpadding="5">
-    <tr>
-        <th>Вид животного</th>
-        <th>{{ animal.animal_type }}</th>
-    </tr>
-    <tr>
-        <th>Имя животного</th>
-        <th>{{ animal.animal_name }}</th>
-    </tr>
-    <tr>
-        <th>Фото животного</th>
-        <th><img src="{{ animal.animal_photo }}" alt="Фото животного не найдено"></th>
-    </tr>
-    </table>
-    <br><hr><br>
-    <a href="/master">Назад</a>
-
+<ul>
+    {% for book in data.books %}
+       {% include 'qw.html' with elem=book %}
+    {% empty %}
+        <li>Список пуст</li>
+    {% endfor %}
+</ul>
 {% endblock %}

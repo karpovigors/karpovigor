@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'LAB_5.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rip_lab_4',
-        'USER': 'admin',
-        'PASSWORD': '1234567890',
-        'HOST': 'SRV2022',
+        'NAME': 'first_db',
+        'USER': 'dbuser',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
         'PORT': 3306, # Стандартный порт MySQL
         'OPTIONS': {'charset': 'utf8'},
         'TEST_CHARSET': 'utf8',
