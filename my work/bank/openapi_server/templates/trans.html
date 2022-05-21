@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Index </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body></br></br></br></br></br>
+        <div align="center">
+          <div align="center" class="border">
+             <div class="header">
+                <h1 class="word">Transfer money</h1>
+             </div>
+                <h2 class="word">
+                    <form action="{{ url_for('trans') }}" method="post">
+                      <div class="msg">{{ msg }}</div>
+                        <input id="username_po" name="username_po" type="text" placeholder="Enter recipient's username" class="textbox"/></br></br>
+                        <input id="money" name="money" type="text" placeholder="Enter money" class="texstbox"/></br></br></br>
+                        <input type="submit" class="btn" value="Translate"></br></br>
+                    </form>
+                </h2>
+                <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+          </div>
+        </div>
+    </body>
+</html>
