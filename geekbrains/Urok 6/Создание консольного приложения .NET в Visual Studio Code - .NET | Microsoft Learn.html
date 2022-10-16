@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus theme-light" lang="ru-ru" dir="ltr" data-css-variable-support="true" data-authenticated="false" data-auth-status-determined="false" data-target="docs" x-ms-format-detection="none">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:title" content="Создание консольного приложения .NET в Visual Studio Code - .NET" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://learn.microsoft.com/ru-ru/dotnet/core/tutorials/with-visual-studio-code" />
+			<meta property="og:description" content="Узнайте, как создать консольное приложение .NET с помощью Visual Studio Code и .NET CLI." />
+
+	<meta property="og:image" content="https://learn.microsoft.com/dotnet/media/dotnet-logo.png" />
+
+	<meta property="og:image:alt" content="Создание консольного приложения .NET в Visual Studio Code - .NET | Microsoft Learn" />
+
+	<meta name="twitter:card" content="summary" />
+
+	<meta name="twitter:site" content="@docsmsft" />
+
+	<meta name="color-scheme" content="light dark">
+
+
+	<meta name="apiPlatform" content="dotnet" />
+<meta name="author" content="tdykstra" />
+<meta name="breadcrumb_path" content="/dotnet/breadcrumb/toc.json" />
+<meta name="depot_name" content="VS.core-docs" />
+<meta name="description" content="Узнайте, как создать консольное приложение .NET с помощью Visual Studio Code и .NET CLI." />
+<meta name="document_id" content="8cc2e9c2-f333-f6a1-064e-790d950b684c" />
+<meta name="document_version_independent_id" content="25a4c9b9-2808-e296-df03-5837000dcbad" />
+<meta name="gitcommit" content="https://github.com/dotnet/docs/blob/c8775f12167f7dcdca7dd2b9cae45aacac880146/docs/core/tutorials/with-visual-studio-code.md" />
+<meta name="loc_file_id" content="Github-35890081.live.VS.core-docs.docs/core/tutorials/with-visual-studio-code.md" />
+<meta name="loc_source_id" content="Github-35890081#live" />
+<meta name="loc_version" content="2022-04-15T10:46:46.1702040Z" />
+<meta name="locale" content="ru-ru" />
+<meta name="ms.author" content="tdykstra" />
+<meta name="ms.contentlocale" content="ru-ru" />
+<meta name="ms.date" content="03/18/2022" />
+<meta name="ms.devlang" content="dotnet" />
+<meta name="ms.prod" content="dotnet-fundamentals" />
+<meta name="ms.topic" content="tutorial" />
+<meta name="ms.translationtype" content="MT" />
+<meta name="original_content_git_url" content="https://github.com/dotnet/docs/blob/live/docs/core/tutorials/with-visual-studio-code.md" />
+<meta name="page_type" content="conceptual" />
+<meta name="recommendations" content="false" />
+<meta name="schema" content="Conceptual" />
+<meta name="search.mshattr.devlang" content="csharp" />
+<meta name="show_latex" content="true" />
+<meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../../fundamentals/toc.json" />
+<meta name="uhfHeaderId" content="MSDocsHeader-DotNet" />
+<meta name="updated_at" content="2022-09-22 09:21 AM" />
+<meta name="word_count" content="1330" />
+<meta name="zone_pivot_groups" content="dotnet-version" />
+
+
+
+
+	<meta name="cmProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/7696cda6-0510-47f6-8302-71bb5d2e28cf" data-source="generated" />
+
+	<meta name="cmProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/911a44a7-2f6c-477c-810f-dc8b7d425cce" data-source="generated" />
+
+	
+
+	<meta name="scope" content=".NET" />
+	<meta name="github_feedback_content_git_url" content="https://github.com/dotnet/docs/blob/main/docs/core/tutorials/with-visual-studio-code.md" />
+<link href="https://learn.microsoft.com/ru-ru/dotnet/core/tutorials/with-visual-studio-code" rel="canonical">
+	<title>Создание консольного приложения .NET в Visual Studio Code - .NET | Microsoft Learn</title>
+
+		<link rel="stylesheet" href="/_themes/docs.theme/master/ru-ru/_themes/styles/425dfcf4.site-ltr.css ">
+
+	
+
+	<script id="msdocs-script">
+	var msDocs = {
+		data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'ru-ru',
+			contentDir: 'ltr',
+			userLocale: 'ru-ru',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+			},
+			hasBinaryRating: true,
+			hasGithubIssues: false,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'None',
+			feedbackGitHubRepo: '',
+			extendBreadcrumb: false,
+			isEditDisplayable: false,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasPrintButton: true,
+			hasBookmark: true,
+			hasShare: true,
+			hasRecommendations: true,
+			contributors: [
+						{ name: "tdykstra", url: "https://github.com/tdykstra" },
+						{ name: "gewarren", url: "https://github.com/gewarren" },
+						{ name: "BillWagner", url: "https://github.com/BillWagner" },
+						{ name: "BenjaminMichaelis", url: "https://github.com/BenjaminMichaelis" },
+						{ name: "johypark", url: "https://github.com/johypark" },
+						{ name: "Youssef1313", url: "https://github.com/Youssef1313" },
+						{ name: "kendrahavens", url: "https://github.com/kendrahavens" },
+						{ name: "devlead", url: "https://github.com/devlead" },
+						{ name: "nschonni", url: "https://github.com/nschonni" },
+						{ name: "mairaw", url: "https://github.com/mairaw" },
+						{ name: "Anduin2017", url: "https://github.com/Anduin2017" },
+						{ name: "nxtn", url: "https://github.com/nxtn" },
+						{ name: "kennethjohnsen", url: "https://github.com/kennethjohnsen" },
+						{ name: "nemrism", url: "https://github.com/nemrism" },
+						{ name: "charliegdev", url: "https://github.com/charliegdev" },
+						{ name: "Mikejo5000", url: "https://github.com/Mikejo5000" },
+						{ name: "jinwood", url: "https://github.com/jinwood" },
+						{ name: "isaac2004", url: "https://github.com/isaac2004" }
+],
+			mathjax: {
+			},
+		},
+		functions:{}
+	};
+	</script>
+	<script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+	<script src="https://js.monitor.azure.com/scripts/c/ms.jsll-3.min.js"></script>
+
+	<script src="/_themes/docs.theme/master/ru-ru/_themes/global/67a45209.deprecation.js"></script>
+		<script src="/_themes/docs.theme/master/ru-ru/_themes/scripts/3e3edaac.index-docs.js"></script>
+</head>
+
+<body lang="ru-ru" dir="ltr">
+	<div class="header-holder has-default-focus">
+		<a href="#main" class="skip-to-main-link has-outline-color-text visually-hidden-until-focused position-fixed has-inner-focus focus-visible top-0 left-0 right-0 padding-xs has-text-centered has-body-background" tabindex="1">Пропустить и перейти к основному содержимому</a>
+
+		<div hidden id="cookie-consent-holder"></div>
+
+		<div id="unsupported-browser" style="
+			background-color: white;
+			color: black;
+			padding: 16px;
+			border-bottom: 1px solid grey;"
+			hidden
+		>
+			<div style="max-width: 800px; margin: 0 auto;">
+				<p style="font-size: 24px">Этот браузер больше не поддерживается.</p>
+				<p style="font-size: 16px; margin-top: 16px;">Выполните обновление до Microsoft Edge, чтобы воспользоваться новейшими функциями, обновлениями для системы безопасности и технической поддержкой.</p>
+				<div style="margin-top: 12px;">
+					<a href="https://go.microsoft.com/fwlink/p/?LinkID=2092881 "
+						style="
+						background-color: #0078d4;
+						border: 1px solid #0078d4;
+						color: white;
+						padding: 6px 12px;
+						border-radius: 2px;
+						display: inline-block;
+						">
+Скачать Microsoft Edge					</a>
+					<a href="https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge"
+						style="
+							background-color: white;
+							padding: 6px 12px;
+							border: 1px solid #505050;
+							color: #171717;
+							border-radius: 2px;
+							display: inline-block;
+							">
+Дополнительные сведения об Internet Explorer и Microsoft Edge					</a>
+				</div>
+			</div>
+
+		</div>
+		<!-- liquid-tag banners global -->
+		<div id="headerAreaHolder" data-bi-name="header">
+<header role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
+	<div class="nav-bar">
+		<div class="nav-bar-brand">
+			<a itemprop="url" href="https://www.microsoft.com" aria-label="Microsoft" class="nav-bar-button">
+				<div class="nav-bar-logo has-background-image theme-display is-light" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope"></div>
+				<div class="nav-bar-logo has-background-image theme-display is-dark is-high-contrast" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope"></div>
+			</a>
+		</div>
+	</div>
+	<div class="nav-bar border-top is-hidden-mobile"></div>
+</header>		</div>
+
+
+			<div id="content-header" class="content-header uhf-container has-padding has-default-focus border-bottom-none" data-bi-name="content-header">
+				<div class="content-header-controls margin-xxs margin-inline-sm-tablet">
+					<button type="button" class="contents-button button button-sm margin-right-xxs" data-bi-name="contents-expand" aria-haspopup="true" data-contents-button>
+						<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+						<span class="contents-expand-title">
+Оглавление						</span>
+					</button>
+					<button type="button" class="ap-collapse-behavior ap-expanded button button-sm" data-bi-name="ap-collapse" aria-controls="action-panel">
+						<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+						<span>Выйти из режима фокусировки</span>
+					</button>
+				</div>
+			</div>
+
+		<div id="disclaimer-holder" class="has-overflow-hidden has-default-focus">
+			<!-- liquid-tag banners sectional -->
+		</div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile ">
+
+			<div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="margin-top-sm-tablet position-fixed display-flex flex-direction-column" role="navigation" aria-label="Основной"></nav>
+			</div>
+
+			<!-- .primary-holder -->
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<!--div.columns -->
+				<div class="columns is-gapless-mobile has-large-gaps ">
+
+
+					<div id="main-column" class="column  is-full is-8-desktop">
+
+						<main id="main" role="main" data-bi-name="content" lang="ru-ru" dir="ltr">
+							<!-- article-header -->
+							<div id="article-header" class="background-color-body margin-top-sm-tablet margin-bottom-xs display-none-print">
+								<div class="display-flex align-items-center ">
+									<details id="article-header-breadcrumbs-overflow-popover" class="popover" data-for="article-header-breadcrumbs">
+										<summary class="button button-clear button-primary button-sm" aria-label="Все элементы навигации">
+											<span class="icon">
+												<span class="docon docon-more"></span>
+											</span>
+										</summary>
+										<div id="article-header-breadcrumbs-overflow" class="popover-content padding-none">
+
+										</div>
+									</details>
+									<bread-crumbs id="article-header-breadcrumbs" class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop" id="page-breadcrumbs"></bread-crumbs>
+
+									<div id="article-header-page-actions"  class="opacity-none margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch">
+
+										<a
+											id="lang-link-tablet"
+											class="button button-primary button-clear button-sm display-none display-inline-flex-tablet"
+											title="Прочитать на английском" data-bi-name="language-toggle"
+											data-read-in-link
+											hidden>
+											<span class="icon margin-none" aria-hidden="true" data-read-in-link-icon>
+												<span class="docon docon-locale-globe"></span>
+											</span>
+											<span class="is-visually-hidden" data-read-in-link-text>Прочитать на английском</span>
+										</a>
+
+											<button
+												type="button"
+												class="collection button button-clear button-sm button-primary display-none display-inline-flex-tablet"
+												data-list-type="collection"
+												data-bi-name="collection"
+												title="Добавить в коллекцию">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-circle-addition"></span>
+												</span>
+												<span class="collection-status is-visually-hidden">Сохранить</span>
+											</button>
+										
+
+										
+
+										
+
+										
+
+
+										
+										<details class="popover popover-right" id="article-header-page-actions-overflow">
+											<summary class="justify-content-flex-start button button-clear button-sm button-primary" aria-label="Дополнительные действия">
+												<span class="icon" aria-hidden="true">
+													<span class="docon docon-more-vertical"></span>
+												</span>
+											</summary>
+											<div class="popover-content padding-none">
+													<button
+														data-page-action-item="overflow-mobile"
+														type="button"
+														class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear display-none-tablet"
+														aria-label="Содержимое"
+														data-bi-name="contents-expand"
+														data-contents-button
+														data-popover-close>
+														<span class="icon">
+															<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+														</span>
+														<span class="contents-expand-title">Оглавление</span>
+													</button>
+
+												<a
+													id="lang-link-overflow"
+													class="justify-content-flex-start button-sm has-inner-focus button button-clear button-block display-none-tablet"
+													title="Прочитать на английском" data-bi-name="language-toggle"
+													data-page-action-item="overflow-mobile"
+													data-check-hidden="true"
+													data-read-in-link
+													hidden
+													>
+													<span class="icon" aria-hidden="true" data-read-in-link-icon>
+														<span class="docon docon-locale-globe"></span>
+													</span>
+													<span data-read-in-link-text>Прочитать на английском</span>
+												</a>
+
+													<button
+														type="button"
+														class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet"
+														data-list-type="collection"
+														data-bi-name="collection"
+														title="Добавить в коллекцию"
+														data-page-action-item="overflow-mobile"
+														data-check-hidden="true"
+														data-popover-close>
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="collection-status">Сохранить</span>
+													</button>
+
+
+
+
+													<button
+														class="button button-block button-clear button-sm justify-content-flex-start has-inner-focus"
+														title="Печать"
+														type="button"
+														aria-label="Печать"
+														data-bi-name="print"
+														data-page-action-item="overflow-all"
+														data-popover-close
+														data-print-page
+														data-check-hidden="true"
+														hidden>
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-print"></span>
+														</span>
+														<span>Печать</span>
+													</button>
+
+													<div aria-hidden="true" class="margin-none display-none-tablet border-top" data-page-action-item="overflow-all"></div>
+
+													
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-twitter" data-bi-name="twitter" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-twitter"></span>
+															</span>
+															<span>Twitter</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-linkedin" data-bi-name="linkedin" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-linkedin"></span>
+															</span>
+															<span>LinkedIn</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-facebook" data-bi-name="facebook" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-facebook"></span>
+															</span>
+															<span>Facebook</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-email" data-bi-name="email" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-mail-message-fill"></span>
+															</span>
+															<span>Адрес электронной почты</span>
+														</a>
+												
+											</div>
+										</details>
+										
+									</div>
+								</div>
+							</div>
+							<!-- end article-header -->
+
+
+							<div class="">
+								<button type="button" class="border contents-button button button-clear button-sm is-hidden-tablet has-inner-focus" aria-label="Содержимое" data-bi-name="contents-expand" data-contents-button hidden>
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span>
+									<span class="contents-expand-title">Оглавление</span>
+								</button>
+							</div>
+
+							<!-- end mobile-contents button  -->
+
+							<div class="content ">
+
+
+								<h1 id="tutorial-create-a-net-console-application-using-visual-studio-code">Учебник. Создание консольного приложения .NET в Visual Studio Code</h1>
+
+
+									<div class="display-flex-tablet justify-content-space-between-tablet page-metadata-container">
+										<ul class="metadata page-metadata" data-bi-name="page info" lang="ru-ru" dir="ltr">
+												<li>
+Статья												</li>
+												<li>
+													<time class="is-invisible" data-article-date aria-label="Дата проверки статьи" datetime="2022-09-22T09:21:00Z" data-article-date-source="git">09/22/2022</time>
+												</li>
+														<li class="readingTime">Чтение занимает 6 мин</li>
+													<li class="contributors-holder display-none-print">
+														<button aria-label="См. всех соавторов" class="contributors-button link-button" data-bi-name="contributors" title="См. всех соавторов">
+																Участники: 18
+														</button>
+													</li>
+										</ul>
+
+<div id="user-feedback" class="display-flex display-none-print" data-hide-on-archived>
+	<button
+		class="thumb-rating-button like link-button margin-xxs margin-right-none"
+		data-binary-rating-response="rating-yes"
+		title="Эта статья полезна"
+		type="button"
+		data-bi-name="rating-yes"
+		data-bi-sat="1"
+	>
+		<span class="icon docon docon-like" aria-hidden="true"></span>
+	</button>
+	<button
+		class="thumb-rating-button dislike link-button margin-xxs margin-right-none"
+		data-binary-rating-response="rating-no"
+		title="Эта статья не полезна"
+		type="button"
+		data-bi-name="rating-no"
+		data-bi-sat="0"
+	>
+		<span class="icon docon docon-dislike" aria-hidden="true"></span>
+	</button>
+</div>
+									</div>
+
+										<nav id="center-doc-outline" class="doc-outline is-hidden-desktop display-none-print" data-bi-name="intopic toc" role="navigation" aria-label="Структура статьи">
+											<h3>В этой статье</h3>
+										</nav>
+
+								<!-- <content> -->
+									<div class="zone has-pivot" data-pivot="dotnet-7-0 dotnet-6-0">
+<p>В этом учебнике показано, как создать и запустить консольное приложение .NET с помощью Visual Studio Code и .NET CLI. Задачи проекта, такие как создание, компиляция и запуск проекта, выполняются с помощью .NET CLI, поэтому вы можете следовать этому руководству, используя при желании другой редактор кода и выполняя команды в терминале.</p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<ul>
+<li>Установленная платформа <a href="https://code.visualstudio.com/" data-linktype="external">Visual Studio Code</a> с <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp" data-linktype="external">расширением C#</a>. См. сведения об <a href="https://code.visualstudio.com/docs/editor/extension-gallery" data-linktype="external">установке расширений Visual Studio Code из Marketplace</a>.</li>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/6.0" data-linktype="external">Пакет SDK для .NET 6</a>.</li>
+</ul>
+<h2 id="create-the-app">Создание приложения</h2>
+<p>Создайте проект консольного приложения .NET с именем HelloWorld.</p>
+<ol>
+<li><p>Запустите Visual Studio Code.</p>
+</li>
+<li><p>В главном меню выберите <strong>Файл</strong>&gt;<strong>Открыть папку</strong> (в macOS выберите <strong>File</strong>&gt;<strong>Open...</strong>  (Файл > Открыть)).</p>
+</li>
+<li><p>В диалоговом окне <strong>Открыть папку</strong> создайте папку <em>HelloWorld</em> и выберите ее. Затем щелкните <strong>Выбрать папку</strong> (или <strong>Открыть</strong> в macOS).</p>
+<p>Имя папки по умолчанию преобразуется в имя проекта и имя пространства имен. Вы добавите код позже в этом учебнике. Предполагается, что пространство имен проекта — <code>HelloWorld</code>.</p>
+</li>
+<li><p>В диалоговом окне <strong>о доверии авторам файлов в этой папке</strong> выберите <strong>Да, я доверяю авторам</strong>.</p>
+</li>
+<li><p>Откройте <strong>терминал</strong> в Visual Studio Code, выбрав в основном меню пункт <strong>Вид</strong>&gt;<strong>Терминал</strong>.</p>
+<p>Откроется окно <strong>Терминал</strong> с командной строкой в папке <em>HelloWorld</em>.</p>
+</li>
+<li><p>В <strong>окне терминала</strong> введите следующую команду:</p>
+<pre><code class="lang-dotnetcli">dotnet new console --framework net6.0
+</code></pre>
+<p>Шаблон проекта создает простое приложение, которое отображает "Hello World" в окне консоли, вызывая метод <a href="/ru-ru/dotnet/api/system.console.writeline#system-console-writeline(system-string)" class="no-loc" data-linktype="absolute-path">Console.WriteLine(String)</a> из файла <em>Program.cs</em>.</p>
+<pre><code class="lang-csharp">Console.WriteLine(&quot;Hello, World!&quot;);
+</code></pre>
+</li>
+<li><p>Замените содержимое <em>Program.cs</em> кодом из этого примера.</p>
+<pre><code class="lang-csharp">namespace HelloWorld
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(&quot;Hello World!&quot;);
+        }
+    }
+}
+</code></pre>
+<p>При первом редактировании файла <em>.cs</em> в Visual Studio Code будет предложено добавить недостающие ресурсы для сборки и отладки приложения. Выберите <strong>Да</strong> и Visual Studio Code создаст папку <em>.vscode</em> с файлами <em>launch.json</em> и <em>tasks.json</em>.</p>
+<div class="NOTE">
+<p>Примечание</p>
+<p>Если запрос не отображается или вы случайно закрываете его без нажатия кнопки <strong>"Да</strong>", выполните следующие действия, чтобы создать <em>launch.json</em> и <em>tasks.json</em>:</p>
+<ul>
+<li>Выберите <strong>"Конфигурация</strong><strong>RunAdd</strong>&gt;" в меню.</li>
+<li>Выберите <strong>.NET 5+ и .NET Core</strong> в командной строке <strong>"Выбор среды</strong> ".</li>
+</ul>
+</div>
+<p>Код определяет класс <code>Program</code> с одним методом <code>Main</code>, который принимает массив <a href="/ru-ru/dotnet/api/system.string" class="no-loc" data-linktype="absolute-path">String</a> в качестве аргумента. <code>Main</code> — точка входа в приложение. Это метод, который автоматически вызывается средой выполнения при запуске приложения. Все аргументы, предоставленные в командной строке при запуске приложения, доступны через массив <em>args</em>.</p>
+<p>В последней версии C# новая используются <a href="../../csharp/fundamentals/program-structure/top-level-statements" data-linktype="relative-path">операторы верхнего уровня</a>, которые позволяют игнорировать класс <code>Program</code> и метод <code>Main</code>. Большинство существующих программ на C# не используют операторы верхнего уровня, поэтому в этом руководстве эта новая функция не используется. Но она доступна в C# 10, и то, используете ли вы ее в своих программах, зависит от стилистических предпочтений.</p>
+</li>
+</ol>
+<h2 id="run-the-app">Запуск приложения</h2>
+<p>Выполните следующие команды в <strong>окне терминала</strong>:</p>
+<pre><code class="lang-dotnetcli">dotnet run
+</code></pre>
+<p>Программа отображает "Hello World!" и заканчивается.</p>
+<p><img src="media/with-visual-studio-code/dotnet-run-command.png" alt="The dotnet run command" data-linktype="relative-path"/></p>
+<h2 id="enhance-the-app">Улучшение приложения</h2>
+<p>Давайте расширим приложение. Теперь у пользователя будет запрашиваться имя, которое затем будет отображаться с датой и временем.</p>
+<ol>
+<li><p>Откройте файл <em>Program.cs</em>.</p>
+</li>
+<li><p>В <em>Program.cs</em> замените содержимое метода <code>Main</code> (строка, вызывающая <code>Console.WriteLine</code>) следующим кодом:</p>
+<pre>
+<code class="lang-csharp">Console.WriteLine(&quot;What is your name?&quot;);
+var name = Console.ReadLine();
+var currentDate = DateTime.Now;
+Console.WriteLine($&quot;{Environment.NewLine}Hello, {name}, on {currentDate:d} at {currentDate:t}!&quot;);
+Console.Write($&quot;{Environment.NewLine}Press any key to exit...&quot;);
+Console.ReadKey(true);
+</code></pre>
+<p>Этот код отображает запрос в окне консоли и ожидает, чтобы пользователь ввел строку текста и нажал клавишу <kbd>ВВОД</kbd>. Приложение сохраняет полученную строку в переменной с именем <code>name</code>. Оно также получает значение свойства <a href="/ru-ru/dotnet/api/system.datetime.now#system-datetime-now" class="no-loc" data-linktype="absolute-path">DateTime.Now</a>, которое содержит текущее локальное время, и присваивает его переменной с именем <code>currentDate</code>. Затем оно отображает эти значения в окне консоли. Наконец, приложение выводит запрос в окне консоли и вызывает метод <a href="/ru-ru/dotnet/api/system.console.readkey#system-console-readkey(system-boolean)" class="no-loc" data-linktype="absolute-path">Console.ReadKey(Boolean)</a> для ожидания ввода данных пользователем.</p>
+<p><a href="/ru-ru/dotnet/api/system.environment.newline#system-environment-newline" class="no-loc" data-linktype="absolute-path">NewLine</a> — это независимый от платформы и языка способ для представления разрыва строки. Его альтернативами являются <code>\n</code> в C# и <code>vbCrLf</code> в Visual Basic.</p>
+<p>Знак доллара (<code>$</code>) перед строкой позволяет вставить такие выражения, как имена переменных, в фигурные скобки в строке. Значение выражения вставляется в строку вместо выражения. Такой синтаксис называется <a href="../../csharp/language-reference/tokens/interpolated" data-linktype="relative-path">интерполированными строками</a>.</p>
+</li>
+<li><p>Сохраните изменения.</p>
+<div class="IMPORTANT">
+<p>Важно!</p>
+<p>В Visual Studio Code необходимо явно сохранить изменения. В отличие от Visual Studio, изменения файлов не сохраняются автоматически при сборке и запуске приложения.</p>
+</div>
+</li>
+<li><p>Запустите программу еще раз:</p>
+<pre><code class="lang-dotnetcli">dotnet run
+</code></pre>
+</li>
+<li><p>В ответ на приглашение в командной строке введите имя и нажмите клавишу <kbd>ВВОД</kbd>.</p>
+<p><span class="mx-imgBorder"><img src="media/debugging-with-visual-studio-code/run-modified-program.png" alt="Terminal window with modified program output" data-linktype="relative-path"></span>
+</p>
+</li>
+<li><p>Нажмите любую клавишу для выхода из программы.</p>
+</li>
+</ol>
+<h2 id="additional-resources">Дополнительные ресурсы</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/docs/setup/setup-overview" data-linktype="external">Setting up Visual Studio Code</a> (Настройка Visual Studio Code)</li>
+</ul>
+<h2 id="next-steps">Следующие шаги</h2>
+<p>В этом учебнике показано, как создать консольное приложение .NET. В следующем учебнике описывается отладка приложения.</p>
+<div class="nextstepaction">
+<p><a href="debugging-with-visual-studio-code" data-linktype="relative-path">Отладка консольного приложения .NET с помощью Visual Studio Code</a></p>
+</div>
+</div>
+<div class="zone has-pivot" data-pivot="dotnet-5-0">
+<p>В этом учебнике показано, как создать и запустить консольное приложение .NET с помощью Visual Studio Code и .NET CLI. Задачи проекта, такие как создание, компиляция и запуск проекта, выполняются с помощью .NET CLI, поэтому вы можете следовать этому руководству, используя при желании другой редактор кода и выполняя команды в терминале.</p>
+<h2 id="prerequisites-1">Предварительные требования</h2>
+<ol>
+<li>Установленная платформа <a href="https://code.visualstudio.com/" data-linktype="external">Visual Studio Code</a> с <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp" data-linktype="external">расширением C#</a>. См. сведения об <a href="https://code.visualstudio.com/docs/editor/extension-gallery" data-linktype="external">установке расширений Visual Studio Code из Marketplace</a>.</li>
+<li><a href="https://dotnet.microsoft.com/download" data-linktype="external">Пакет SDK для .NET 5</a>. Если вы устанавливаете пакет SDK для .NET 6, также установите пакет SDK для .NET 5, иначе некоторые инструкции руководства не будут работать. Дополнительные сведения см. в статье <a href="top-level-templates" data-linktype="relative-path">Новые шаблоны C# для создания инструкций верхнего уровня</a>.</li>
+</ol>
+<h2 id="create-the-app-1">Создание приложения</h2>
+<p>Создайте проект консольного приложения .NET с именем HelloWorld.</p>
+<ol>
+<li><p>Запустите Visual Studio Code.</p>
+</li>
+<li><p>В главном меню выберите <strong>Файл</strong>&gt;<strong>Открыть папку</strong> (в macOS выберите <strong>File</strong>&gt;<strong>Open...</strong>  (Файл > Открыть)).</p>
+</li>
+<li><p>В диалоговом окне <strong>Открытие папки</strong> создайте папку <em>HelloWorld</em> и щелкните <strong>Выбрать папку</strong> (в macOS щелкните <strong>Open</strong> (Открыть)).</p>
+<p>Имя папки по умолчанию преобразуется в имя проекта и имя пространства имен. Вы добавите код позже в этом учебнике. Предполагается, что пространство имен проекта — <code>HelloWorld</code>.</p>
+</li>
+<li><p>Откройте <strong>терминал</strong> в Visual Studio Code, выбрав в основном меню пункт <strong>Вид</strong>&gt;<strong>Терминал</strong>.</p>
+<p>Откроется окно <strong>Терминал</strong> с командной строкой в папке <em>HelloWorld</em>.</p>
+</li>
+<li><p>В <strong>окне терминала</strong> введите следующую команду:</p>
+<pre><code class="lang-dotnetcli">dotnet new console --framework net5.0
+</code></pre>
+</li>
+</ol>
+<p>Этот шаблон создает простое приложение Hello World. Он вызывает метод <a href="/ru-ru/dotnet/api/system.console.writeline#system-console-writeline(system-string)" class="no-loc" data-linktype="absolute-path">Console.WriteLine(String)</a> для вывода "Hello World!" в окне консоли.</p>
+<p>Код шаблона определяет класс <code>Program</code> с одним методом <code>Main</code>, который принимает в качестве аргумента массив <a href="/ru-ru/dotnet/api/system.string" class="no-loc" data-linktype="absolute-path">String</a>.</p>
+<pre><code class="lang-csharp">using System;
+
+namespace HelloWorld
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(&quot;Hello World!&quot;);
+        }
+    }
+}
+</code></pre>
+<p><code>Main</code> — точка входа в приложение. Это метод, который автоматически вызывается средой выполнения при запуске приложения. Все аргументы, предоставленные в командной строке при запуске приложения, доступны через массив <em>args</em>.</p>
+<h2 id="run-the-app-1">Запуск приложения</h2>
+<p>Выполните следующие команды в <strong>окне терминала</strong>:</p>
+<pre><code class="lang-dotnetcli">dotnet run
+</code></pre>
+<p>Программа отображает "Hello World!" и заканчивается.</p>
+<p><img src="media/with-visual-studio-code/dotnet-run-command.png" alt="The dotnet run command" data-linktype="relative-path"/></p>
+<h2 id="enhance-the-app-1">Улучшение приложения</h2>
+<p>Давайте расширим приложение. Теперь у пользователя будет запрашиваться имя, которое затем будет отображаться с датой и временем.</p>
+<ol>
+<li><p>Откройте файл <em>Program.cs</em>, щелкнув его.</p>
+<p>Когда вы в первый раз открываете файл C# в Visual Studio Code, в редакторе загружается <a href="https://www.omnisharp.net/" data-linktype="external">OmniSharp</a>.</p>
+<p><img src="media/with-visual-studio-code/open-program-cs.png" alt="Open the Program.cs file" data-linktype="relative-path"/></p>
+</li>
+<li><p>Когда в Visual Studio Code будет предложено добавить недостающие ресурсы для сборки и отладки приложения, выберите <strong>Да</strong>.</p>
+<p><img src="media/with-visual-studio-code/missing-assets.png" alt="Prompt for missing assets" data-linktype="relative-path"/></p>
+</li>
+<li><p>В <em>Program.cs</em> замените содержимое метода <code>Main</code> (строка, вызывающая <code>Console.WriteLine</code>) следующим кодом:</p>
+<pre>
+<code class="lang-csharp">Console.WriteLine(&quot;What is your name?&quot;);
+var name = Console.ReadLine();
+var currentDate = DateTime.Now;
+Console.WriteLine($&quot;{Environment.NewLine}Hello, {name}, on {currentDate:d} at {currentDate:t}!&quot;);
+Console.Write($&quot;{Environment.NewLine}Press any key to exit...&quot;);
+Console.ReadKey(true);
+</code></pre>
+<p>Этот код отображает запрос в окне консоли и ожидает, чтобы пользователь ввел строку текста и нажал клавишу <kbd>ВВОД</kbd>. Приложение сохраняет полученную строку в переменной с именем <code>name</code>. Оно также получает значение свойства <a href="/ru-ru/dotnet/api/system.datetime.now#system-datetime-now" class="no-loc" data-linktype="absolute-path">DateTime.Now</a>, которое содержит текущее локальное время, и присваивает его переменной с именем <code>currentDate</code>. Затем оно отображает эти значения в окне консоли. Наконец, приложение выводит запрос в окне консоли и вызывает метод <a href="/ru-ru/dotnet/api/system.console.readkey#system-console-readkey(system-boolean)" class="no-loc" data-linktype="absolute-path">Console.ReadKey(Boolean)</a> для ожидания ввода данных пользователем.</p>
+<p><a href="/ru-ru/dotnet/api/system.environment.newline#system-environment-newline" class="no-loc" data-linktype="absolute-path">NewLine</a> — это независимый от платформы и языка способ для представления разрыва строки. Его альтернативами являются <code>\n</code> в C# и <code>vbCrLf</code> в Visual Basic.</p>
+<p>Знак доллара (<code>$</code>) перед строкой позволяет вставить такие выражения, как имена переменных, в фигурные скобки в строке. Значение выражения вставляется в строку вместо выражения. Такой синтаксис называется <a href="../../csharp/language-reference/tokens/interpolated" data-linktype="relative-path">интерполированными строками</a>.</p>
+</li>
+<li><p>Сохраните изменения.</p>
+<div class="IMPORTANT">
+<p>Важно!</p>
+<p>В Visual Studio Code необходимо явно сохранить изменения. В отличие от Visual Studio, изменения файлов не сохраняются автоматически при сборке и запуске приложения.</p>
+</div>
+</li>
+<li><p>Запустите программу еще раз:</p>
+<pre><code class="lang-dotnetcli">dotnet run
+</code></pre>
+</li>
+<li><p>В ответ на приглашение в командной строке введите имя и нажмите клавишу <kbd>ВВОД</kbd>.</p>
+<p><span class="mx-imgBorder"><img src="media/debugging-with-visual-studio-code/run-modified-program.png" alt="Terminal window with modified program output" data-linktype="relative-path"></span>
+</p>
+</li>
+<li><p>Нажмите любую клавишу для выхода из программы.</p>
+</li>
+</ol>
+<h2 id="additional-resources-1">Дополнительные ресурсы</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/docs/setup/setup-overview" data-linktype="external">Setting up Visual Studio Code</a> (Настройка Visual Studio Code)</li>
+</ul>
+<h2 id="next-steps-1">Следующие шаги</h2>
+<p>В этом учебнике показано, как создать консольное приложение .NET. В следующем учебнике описывается отладка приложения.</p>
+<div class="nextstepaction">
+<p><a href="debugging-with-visual-studio-code" data-linktype="relative-path">Отладка консольного приложения .NET с помощью Visual Studio Code</a></p>
+</div>
+</div>
+<div class="zone has-pivot" data-pivot="dotnet-core-3-1">
+<p>Этот учебник доступен только для .NET 5 и .NET 6. Выберите один из этих вариантов в верхней части страницы.</p>
+</div>
+
+							</div>
+
+							<div id="assertive-live-region" role="alert" aria-live="assertive" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<div id="polite-live-region" role="status" aria-live="polite" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<!-- </content> -->
+
+						</main>
+
+
+
+
+						<!-- recommendations section -->
+							<section id="recommendations-section" data-bi-name="recommendations" class="display-none-print"></section>
+							<section id="right-rail-recommendations-mobile" data-bi-name="recommendations" class="display-none-desktop margin-top-xxs" hidden></section>
+						<!-- end recommendations section -->
+
+							<section id="right-rail-learning-resources-mobile" class="display-none-desktop margin-top-xxs" data-bi-name="learning-resources-card" hidden></section>
+							<section id="right-rail-qna-mobile" class="display-none-desktop margin-top-xxs" data-bi-name="qna-link-card" hidden></section>
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+							<section id="right-rail-events-mobile" class="display-none-desktop margin-top-xs" data-bi-name="events-card" hidden></section>
+
+						<div class="border-top is-visible-interactive has-default-focus margin-top-sm ">
+
+
+
+	<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+	<div class="display-flex is-full-height padding-right-lg-desktop">
+			<a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a>
+		<div class="margin-inline-xs flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu-interactive" aria-expanded="false" title="Тема" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Тема</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon css-variable-support border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>
+Светлая					</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon css-variable-support display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>
+Темная					</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon css-variable-support display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>
+Высокая контрастность					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li>
+				<li><a data-mscc-ic="false" href="/ru-ru/previous-versions/" data-bi-name="archivelink">Предыдущие версии</a></li>
+				<li><a data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Блог</a></li>
+				<li><a data-mscc-ic="false" href="/ru-ru/contribute/" data-bi-name="contributorGuide">Участие в доработке</a></li>
+					<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Конфиденциальность и файлы cookie</a></li>
+				<li><a data-mscc-ic="false" href="/ru-ru/legal/termsofuse" data-bi-name="termsofuse">Условия использования</a></li>
+				<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Товарные знаки</a></li>
+		<li>&copy; Microsoft 2022</li>
+	</ul>
+</footer>
+						</div>
+
+					</div>
+
+						<div
+							class="font-size-sm right-container column is-4-desktop display-none display-block-desktop"
+							data-bi-name="pageactions"
+							role="complementary"
+							aria-label="Действия страницы">
+
+							<div id="affixed-right-container" class="margin-top-sm-tablet doc-outline is-vertically-scrollable" data-bi-name="right-column">
+								<section id="right-rail-events" data-bi-name="events-card" class="margin-bottom-xxs" hidden></section>
+								<section id="right-rail-recommendations" data-bi-name="recommendations" class="margin-bottom-xxs" hidden></section>
+								<nav id="side-doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="Структура статьи">
+									<h3>В этой статье</h3>
+								</nav>
+								<section id="right-rail-learning-resources" class="margin-top-xxs" data-bi-name="learning-resources-card" hidden></section>
+								<section id="right-rail-qna" class="margin-top-xxs" data-bi-name="qna-link-card" hidden></section>
+							</div>
+						</div>
+
+				</div>
+				<!--end of div.columns -->
+
+			</section>
+			<!--end of .primary-holder -->
+
+			<!-- interactive container -->
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+			<!-- end of interactive container -->
+		</div>
+
+	</div>
+	<!--end of .mainContainer -->
+
+	<section class="border-top has-default-focus is-hidden-interactive margin-top-sm ">
+
+
+
+	<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+	<div class="display-flex is-full-height padding-right-lg-desktop">
+			<a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a>
+		<div class="margin-inline-xs flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu" aria-expanded="false" title="Тема" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Тема</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon css-variable-support border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>
+Светлая					</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon css-variable-support display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>
+Темная					</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon css-variable-support display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>
+Высокая контрастность					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li>
+				<li><a data-mscc-ic="false" href="/ru-ru/previous-versions/" data-bi-name="archivelink">Предыдущие версии</a></li>
+				<li><a data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Блог</a></li>
+				<li><a data-mscc-ic="false" href="/ru-ru/contribute/" data-bi-name="contributorGuide">Участие в доработке</a></li>
+					<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Конфиденциальность и файлы cookie</a></li>
+				<li><a data-mscc-ic="false" href="/ru-ru/legal/termsofuse" data-bi-name="termsofuse">Условия использования</a></li>
+				<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Товарные знаки</a></li>
+		<li>&copy; Microsoft 2022</li>
+	</ul>
+</footer>
+	</section>
+
+		<script src="/static/third-party/MathJax/2.7.2/MathJax.js?config=TeX-AMS_CHTML" integrity="sha384-RLsAi7wiVvnmHrRjlVvUjU45C0bfsIBg6Gsxue6azjJi+lA5q5uK+XbGzO3yn5g1" crossorigin="anonymous"></script>
+	<div id="action-panel" role="region" aria-label="Панель действий" class="action-panel has-default-focus" tabindex="-1"></div>
+</body>
+</html>
