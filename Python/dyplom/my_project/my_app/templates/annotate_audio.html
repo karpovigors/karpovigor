@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Annotate Audio{% endblock %}
+
+{% block content %}
+    <h1>Annotate Audio: {{ audio.audio_file.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Добавить слово</button>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Начало</th>
+                <th>Конец</th>
+                <th>Текст</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word in words %}
+                <tr>
+                    <td>{{ word.start_time }}</td>
+                    <td>{{ word.end_time }}</td>
+                    <td>{{ word.text }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
