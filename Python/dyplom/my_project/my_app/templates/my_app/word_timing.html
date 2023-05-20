@@ -4,11 +4,11 @@
   <!-- Заголовок страницы -->
   <h1>Разметка Аудио</h1>
 
-  <!-- Контейнер для отображения аудио и его таймлайна -->
+
   <div id="waveform"></div>
   <div id="timeline"></div>
 
-  <!-- Кнопки управления воспроизведением аудио -->
+
   <div id="word-timing-controls">
     <button id="play-btn">&#9658;</button>
     <button id="pause-btn">&#10074;&#10074;</button>
@@ -19,7 +19,7 @@
   <div>
     <button id="submit">Сохранить</button>
     <button id="export-btn" onclick="location.href='{% url 'my_app:export_txt' transcription_id %}'">Экспорт (TXT)</button>
-    <button id="export-eaf-btn">Экспорт (EAF)</button>
+    <!-- <button id="export-eaf-btn">Экспорт (EAF)</button> -->
     <label for="zoom-slider">Масштаб:</label>
     <input type="range" id="zoom-slider" min="1" max="100" value="1">
   </div>
@@ -65,6 +65,7 @@
   <script src="/static/js/wavesurfer.timeline.min.js"></script>
   <script src="/static/js/wavesurfer.regions.min.js"></script>
   <script src="/static/js/wavesurfer.cursor.min.js"></script>
+  <script src="/static/js/wavesurfer.spectrogram.js"></script>
   <script>
       document.addEventListener('DOMContentLoaded', () => {
           var wavesurfer = WaveSurfer.create({
