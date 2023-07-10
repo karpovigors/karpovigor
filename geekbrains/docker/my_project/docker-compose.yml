@@ -7,5 +7,5 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - /Users/igorkarpov/Documents/GitHub/karpovigor/Python/dyplom/my_project/my_app
-      - /Users/igorkarpov/Documents/GitHub/karpovigor/Python/dyplom/my_project/db.sqlite3
+      - /Users/igorkarpov/Documents/GitHub/karpovigor/geekbrains/docker/my_project/my_app
+      - /Users/igorkarpov/Documents/GitHub/karpovigor/geekbrains/docker/my_project/db.sqlite3
