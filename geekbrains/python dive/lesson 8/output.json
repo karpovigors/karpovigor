@@ -1,0 +1,56 @@
+[
+    {
+        "type": "file",
+        "name": "main.py",
+        "parent_dir": null,
+        "size": 176
+    },
+    {
+        "type": "directory",
+        "name": "file_utils",
+        "parent_dir": null,
+        "size": 9388
+    },
+    {
+        "type": "file",
+        "name": "dirwalk.py",
+        "parent_dir": "file_utils",
+        "size": 820
+    },
+    {
+        "type": "file",
+        "name": "__init__.py",
+        "parent_dir": "file_utils",
+        "size": 106
+    },
+    {
+        "type": "directory",
+        "name": "__pycache__",
+        "parent_dir": "file_utils",
+        "size": 3933
+    },
+    {
+        "type": "file",
+        "name": "io_handlers.cpython-311.pyc",
+        "parent_dir": "__pycache__",
+        "size": 1969
+    },
+    {
+        "type": "file",
+        "name": "dirwalk.cpython-311.pyc",
+        "parent_dir": "__pycache__",
+        "size": 1572
+    },
+    {
+        "type": "file",
+        "name": "__init__.cpython-311.pyc",
+        "parent_dir": "__pycache__",
+        "size": 392
+    },
+    {
+        "type": "file",
+        "name": "io_handlers.py",
+        "parent_dir": "file_utils",
+        "size": 596
+    }
+]
