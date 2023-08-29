@@ -1,4 +1,6 @@
 import csv
+import logging
+import argparse
 
 # Исключение для неверной оценки
 class InvalidGradeError(Exception):
@@ -77,7 +79,7 @@ class Student:
             try:
                 self.subjects[subject_name].add_grade(grade)
             except InvalidGradeError:
-                print("Ошибка при добавлении оценки:", InvalidGradeError())
+                logging.error(f"Ошибка при добавлении оценки для предмета '{subject_name}': {InvalidGradeError()}")
         else:
             raise InvalidSubjectError(subject_name)
 
@@ -86,7 +88,7 @@ class Student:
             try:
                 self.subjects[subject_name].add_test_result(result)
             except InvalidTestResultError:
-                print("Ошибка при добавлении результата теста:", InvalidTestResultError())
+                logging.error(f"Ошибка при добавлении результата теста для предмета '{subject_name}': {InvalidTestResultError()}")
         else:
             raise InvalidSubjectError(subject_name)
 
@@ -110,8 +112,24 @@ class Student:
             return None
         return sum(total_grades) / len(total_grades)
 
-# Пример использования
-if __name__ == "__main__":
+def configure_logging(log_to_file=False):
+    log_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    logging.basicConfig(level=logging.DEBUG, format=log_format)
+    
+    if log_to_file:
+        file_handler = logging.FileHandler('app.log')
+        file_handler.setLevel(logging.DEBUG)
+        file_handler.setFormatter(logging.Formatter(log_format))
+        logging.getLogger('').addHandler(file_handler)
+
+def main():
+    parser = argparse.ArgumentParser(description='Управление студентами.')
+    parser.add_argument('--log_to_file', action='store_true', help='Записывать логи в файл app.log')
+
+    args = parser.parse_args()
+
+    configure_logging(log_to_file=args.log_to_file)
+
     try:
         student = Student('subjects.csv')
         student.name = "Иван Иванов"  # Установка ФИО
@@ -128,13 +146,16 @@ if __name__ == "__main__":
         print(f"Общий средний балл: {student.overall_average_grade()}")
 
     except InvalidGradeError as e:
-        print("Ошибка:", e)
+        logging.error(f"Ошибка: {e}")
 
     except InvalidTestResultError as e:
-        print("Ошибка:", e)
+        logging.error(f"Ошибка: {e}")
 
     except InvalidSubjectError as e:
-        print("Ошибка:", e)
+        logging.error(f"Ошибка: {e}")
 
     except ValueError as e:
-        print("Ошибка:", e)
+        logging.error(f"Ошибка: {e}")
+
+if __name__ == "__main__":
+    main()

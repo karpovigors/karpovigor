@@ -112,29 +112,87 @@ class Student:
 
 # Пример использования
 if __name__ == "__main__":
-    try:
+    import doctest
+    import unittest
+    import pytest
+
+    # Код с тестами для doctest
+    def run_tests():
+        """
+        >>> student = Student('subjects.csv')
+        >>> student.name = "Иван Иванов"
+
+        >>> student.add_grade("Математика", 4)
+        >>> student.add_grade("Математика", 5)
+        >>> student.add_test_result("Математика", 90)
+
+        >>> student.add_grade("Физика", 3)
+        >>> student.add_test_result("Физика", 85)
+
+        >>> student.average_grade('Математика')
+        4.5
+        >>> student.average_grade('Физика')
+        3.0
+        >>> student.overall_average_grade()
+        3.625
+        """
+        pass
+
+    doctest.testmod()
+
+    class TestStudentMethods(unittest.TestCase):
+        def setUp(self):
+            self.student = Student('subjects.csv')
+            self.student.name = "Иван Иванов"
+
+        def test_add_grade(self):
+            self.student.add_grade("Математика", 4)
+            self.assertEqual(self.student.average_grade('Математика'), 4.0)
+
+        def test_add_test_result(self):
+            self.student.add_test_result("Математика", 90)
+            self.assertEqual(self.student.average_test_result('Математика'), 90.0)
+
+        def test_invalid_grade(self):
+            with self.assertRaises(InvalidGradeError):
+                self.student.add_grade("Математика", 6)
+
+        def test_invalid_test_result(self):
+            with self.assertRaises(InvalidTestResultError):
+                self.student.add_test_result("Математика", 105)
+
+        def test_invalid_subject(self):
+            with self.assertRaises(InvalidSubjectError):
+                self.student.add_grade("История", 5)
+
+    unittest.main()
+
+    def test_add_grade():
         student = Student('subjects.csv')
-        student.name = "Иван Иванов"  # Установка ФИО
-
+        student.name = "Иван Иванов"
         student.add_grade("Математика", 4)
-        student.add_grade("Математика", 5)
+        assert student.average_grade('Математика') == 4.0
+
+    def test_add_test_result():
+        student = Student('subjects.csv')
+        student.name = "Иван Иванов"
         student.add_test_result("Математика", 90)
+        assert student.average_test_result('Математика') == 90.0
 
-        student.add_grade("Физика", 3)
-        student.add_test_result("Физика", 105)  # Ошибка: результат теста выходит за допустимый диапазон
+    def test_invalid_grade():
+        student = Student('subjects.csv')
+        student.name = "Иван Иванов"
+        with pytest.raises(InvalidGradeError):
+            student.add_grade("Математика", 6)
 
-        print(f"Средний балл по Математике: {student.average_grade('Математика')}")
-        print(f"Средний балл по Физике: {student.average_grade('Физика')}")
-        print(f"Общий средний балл: {student.overall_average_grade()}")
+    def test_invalid_test_result():
+        student = Student('subjects.csv')
+        student.name = "Иван Иванов"
+        with pytest.raises(InvalidTestResultError):
+            student.add_test_result("Математика", 105)
 
-    except InvalidGradeError as e:
-        print("Ошибка:", e)
-
-    except InvalidTestResultError as e:
-        print("Ошибка:", e)
-
-    except InvalidSubjectError as e:
-        print("Ошибка:", e)
-
-    except ValueError as e:
-        print("Ошибка:", e)
+    def test_invalid_subject():
+        student = Student('subjects.csv')
+        student.name = "Иван Иванов"
+        with pytest.raises(InvalidSubjectError):
+            student.add_grade("История", 5)
