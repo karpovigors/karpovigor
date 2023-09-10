@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Интернет-магазин{% endblock %}</title>
+</head>
+<body>
+
+<header>
+    Мой интернет-магазин
+</header>
+
+<nav>
+    <ul>
+        <li><a href="/clothes">Одежда</a></li>
+        <li><a href="/shoes">Обувь</a></li>
+    </ul>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+<footer>
+    © 2023 Интернет-магазин
+</footer>
+
+</body>
+</html>
