@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Django Site{% endblock %}</title>
+    <!-- Вы можете добавить здесь другие мета-теги, CSS- или JS-файлы -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Django Site</h1>
+        <nav>
+            <!-- Навигационное меню -->
+            <a href="/">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <!-- Добавьте другие ссылки по мере необходимости -->
+        </nav>
+    </header>
+
+    <main>
+        <!-- Основное содержимое страницы -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Подвал сайта -->
+        <p>&copy; 2023 My Django Site. All rights reserved.</p>
+    </footer>
+</body>
+</html>
