@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <!-- Заголовок страницы -->
+  <h1>Разметка Аудио</h1>
+
+
+  <div id="waveform"></div>
+  <div id="timeline"></div>
+
+
+  <div id="word-timing-controls">
+    <button id="play-btn">&#9658;</button>
+    <button id="pause-btn">&#10074;&#10074;</button>
+    <button id="stop-btn">&#9632;</button>    
+  </div>
+
+  <!-- Кнопки для сохранения, экспорта и управления масштабом -->
+  <div>
+    <button id="submit">Сохранить</button>
+    <button id="export-btn" onclick="location.href='{% url 'my_app:export_txt' transcription_id %}'">Экспорт (TXT)</button>
+    <!-- <button id="export-eaf-btn">Экспорт (EAF)</button> -->
+    <label for="zoom-slider">Масштаб:</label>
+    <input type="range" id="zoom-slider" min="1" max="100" value="1">
+  </div>
+
+  <!-- Форма для добавления нового слова -->
+  <button id="toggle-add-form">Добавить</button>
+  <div id="add-word-form" style="display: none;">
+    <form id="add-word-form-element" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Добавить слово</button>
+    </form>
+  </div>
+
+  <!-- Контейнер для отображения таймингов слов -->
+  <div class="word-timings-container">
+    <div class="word-timings">
+      {% for word_timing in word_timings %}
+      <div class="word-timing" data-id="{{ word_timing.id }}">
+        <span>
+          {{ word_timing.word }} ({{ word_timing.start_time|floatformat:2 }} - {{ word_timing.end_time|floatformat:2 }})
+        </span>
+        <button class="toggle-edit-btn">Редактировать</button>
+        <button class="delete-btn" data-word-timing-id="{{ word_timing.id }}">Удалить</button>
+        <!-- Форма для редактирования слова и его тайминга -->
+        <div class="edit-controls" style="display: none;">
+          <form class="edit-form" method="post" action="{% url 'my_app:update_word_timing' word_timing.id %}">
+            {% csrf_token %}
+            <label for="word">Слово:</label>
+            <input type="text" name="word" id="word" value="{{ word_timing.word }}">
+            <label for="start_time">Начало:</label>
+            <input type="text" name="start_time" id="start_time" value="{{ word_timing.start_time|floatformat:2 }}">
+            <label for="end_time">Конец:</label>
+            <input type="text" name="end_time" id="end_time" value="{{ word_timing.end_time|floatformat:2 }}">
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- Скрипты для работы аудиоплеера и обработки событий -->
+  <script src="/static/js/wavesurfer.js"></script>
+  <script src="/static/js/wavesurfer.timeline.min.js"></script>
+  <script src="/static/js/wavesurfer.regions.min.js"></script>
+  <script src="/static/js/wavesurfer.cursor.min.js"></script>
+  <script src="/static/js/wavesurfer.spectrogram.js"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          var wavesurfer = WaveSurfer.create({
+              container: '#waveform',
+              waveColor: 'violet',
+              progressColor: 'purple',
+              barWidth: 2,
+              plugins: [
+                  WaveSurfer.timeline.create({
+                      container: '#timeline'
+                  }),
+                  WaveSurfer.regions.create(),
+                  WaveSurfer.cursor.create({
+                      showTime: true,
+                      opacity: 1,
+                      customShowTimeStyle: {
+                          'background-color': '#000',
+                          color: '#fff',
+                          padding: '2px',
+                          'font-size': '10px'
+                      }
+                  })
+              ]
+          });
+          
+          wavesurfer.load('{{ audio_file_url }}');
+          document.getElementById('play-btn').addEventListener('click', () => {
+              wavesurfer.play();
+          });
+          document.getElementById('pause-btn').addEventListener('click', () => {
+              wavesurfer.pause();
+          });
+          document.getElementById('stop-btn').addEventListener('click', () => {
+              wavesurfer.stop();
+          });
+          
+          document.getElementById('toggle-add-form').addEventListener('click', () => {
+              let addWordForm = document.getElementById('add-word-form');
+              let toggleButton = document.getElementById('toggle-add-form');
+              if (addWordForm.style.display === 'none') {
+                  addWordForm.style.display = 'block';
+                  toggleButton.textContent = 'Скрыть';
+              } else {
+                  addWordForm.style.display = 'none';
+                  toggleButton.textContent = 'Добавить';
+              }
+          });
+          document.querySelectorAll('.toggle-edit-btn').forEach((toggleButton, index) => {
+              toggleButton.addEventListener('click', () => {
+                  let wordTiming = toggleButton.closest('.word-timing');
+                  let editControls = wordTiming.querySelector('.edit-controls');
+                  if (editControls.style.display === 'none') {
+                      editControls.style.display = 'block';
+                      toggleButton.textContent = 'Скрыть';
+                  } else {
+                      editControls.style.display = 'none';
+                      toggleButton.textContent = 'Редактировать';
+                  }
+              });
+          });
+          
+          async function refreshPage() {
+              const response = await fetch(window.location.href);
+              const newDocument = new DOMParser().parseFromString(await response.text(), 'text/html');
+              document.querySelector('.word-timings').innerHTML = newDocument.querySelector('.word-timings').innerHTML;
+          }
+          document.getElementById('submit').addEventListener('click', async () => {
+              const forms = document.querySelectorAll('.edit-form');
+              const promises = [];
+              forms.forEach((editForm) => {
+                  const url = editForm.getAttribute('action');
+                  const word = editForm.querySelector('input[name="word"]').value;
+                  const start_time = parseFloat(editForm.querySelector('input[name="start_time"]').value);
+                  const end_time = parseFloat(editForm.querySelector('input[name="end_time"]').value);
+                  const jsonBody = JSON.stringify({word, start_time, end_time});
+                  const request = new Request(url, {
+                      method: 'POST',
+                      body: jsonBody,
+                      headers: new Headers({
+                          'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                          'Content-Type': 'application/json'
+                      })
+                  });
+                  promises.push(fetch(request));
+              });
+              try {
+                  await Promise.all(promises);
+                  alert('Изменения сохранены');
+                  location.reload();
+              } catch (error) {
+                  console.error('Ошибка сохранения:', error);
+                  alert('Произошла ошибка при сохранении изменений. Пожалуйста, попробуйте еще раз.');
+              }
+          });
+          
+          document.getElementById('add-word-form-element').addEventListener('submit', async (event) => {
+              event.preventDefault();
+              const formData = new FormData(event.target);
+              const url = event.target.getAttribute('action') || window.location.href;
+              try {
+                  const response = await fetch(url, {
+                      method: 'POST',
+                      body: formData,
+                      headers: new Headers({
+                          'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                      })
+                  });
+                  
+                  if (response.ok) {
+                      alert('Слово добавлено');
+                      location.reload();
+                  } else {
+                      throw new Error(`Ошибка: ${response.statusText}`);
+                  }
+              } catch (error) {
+                  console.error('Ошибка добавления слова:', error);
+                  alert('Произошла ошибка при добавлении слова. Пожалуйста, попробуйте еще раз.');
+              }
+          });
+          
+          document.querySelector('#zoom-slider').oninput = function () {
+              wavesurfer.zoom(Number(this.value));
+          };
+          document.querySelectorAll('.delete-btn').forEach((deleteBtn) => {
+              deleteBtn.addEventListener('click', async (event) => {
+                  event.preventDefault();
+                  const wordTimingId = event.target.getAttribute('data-word-timing-id');
+                  const deleteUrl = `{% url 'my_app:delete_word_timing' 0 %}`.replace('/0', `/${wordTimingId}`);
+                  try {
+                      const response = await fetch(deleteUrl, {
+                          method: 'POST',
+                          headers: new Headers({
+                              'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                          })
+                      });
+                      if (response.ok) {
+                          alert('Слово удалено');
+                          location.reload();
+                      } else {
+                          throw new Error(`Ошибка: ${response.statusText}`);
+                      }
+                  } catch (error) {
+                      console.error('Ошибка удаления слова:', error);
+                      alert('Произошла ошибка при удалении слова. Пожалуйста, попробуйте еще раз.');
+                  }
+              });
+          });
+          
+          wavesurfer.on('ready', () => {
+              {% for word_timing in word_timings %}
+              wavesurfer.addRegion({
+                  id: '{{ word_timing.id }}',
+                  start: {{ word_timing.start_time }},
+                  end: {{ word_timing.end_time }},
+                  color: 'rgba(0, 255, 0, 0.3)'
+              });
+              {% endfor %}
+          });
+          
+          wavesurfer.on('region-click', (region, e) => {
+              wavesurfer.seekTo(region.start / wavesurfer.getDuration());
+              let wordTiming = document.querySelector(`.word-timing[data-id="${region.id}"]`);
+              let wordTimingText = wordTiming.querySelector('span');
+              alert(`Selected word: ${wordTimingText.textContent}`);
+          });
+          
+          wavesurfer.on('region-updated', (region) => {
+              let wordTiming = document.querySelector(`.word-timing[data-id="${region.id}"]`);
+              let startTimeInput = wordTiming.querySelector('#start_time');
+              let endTimeInput = wordTiming.querySelector('#end_time');
+              let wordTimingText = wordTiming.querySelector('span');
+              
+              startTimeInput.value = region.start.toFixed(2);
+              endTimeInput.value = region.end.toFixed(2);
+              
+              let word = wordTiming.querySelector('#word').value;
+              wordTimingText.textContent = `${word} (${region.start.toFixed(2)} - ${region.end.toFixed(2)})`;
+          });
+          
+          // Экспорт в EAF-файл
+          document.getElementById('export-eaf-btn').addEventListener('click', async () => {
+              const exportUrl = '{% url "my_app:export_eaf" transcription_id %}';
+              try {
+                  const response = await fetch(exportUrl, {
+                      method: 'GET',
+                  });
+                  
+                  if (response.ok) {
+                      const blob = await response.blob();
+                      const url = window.URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = 'transcription.eaf';
+                      a.click();
+                      window.URL.revokeObjectURL(url);
+                  } else {
+                      throw new Error(`Ошибка: ${response.statusText}`);
+                  }
+              } catch (error) {
+                  console.error('Ошибка экспорта в EAF:', error);
+                  alert('Произошла ошибка при экспорте в EAF. Пожалуйста, попробуйте еще раз.');
+              }
+          });
+      });
+  </script>
+{% endblock %}
+
