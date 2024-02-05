@@ -1,0 +1,3 @@
+include:
+  - project: 'karpovigors/example'
+    file: '/build_template.yml'
